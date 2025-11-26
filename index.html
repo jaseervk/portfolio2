@@ -6,6 +6,7 @@
   <title>Jaseer VK | Cybersecurity Researcher</title>
 
   <style>
+    /* RESET */
     * {
       margin: 0;
       padding: 0;
@@ -17,27 +18,27 @@
       background: #020b0f;
       color: #fff;
       overflow-x: hidden;
-
       opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 1s ease, transform 1s ease;
+      transform: translateY(10px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
     }
+
     body.loaded {
       opacity: 1;
       transform: translateY(0);
     }
 
-    /* ------------------------ NAVBAR ----------------------- */
+    /* NAVBAR */
     nav {
       width: 100%;
-      padding: 20px 40px;
+      padding: 18px 35px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       position: fixed;
       top: 0;
       left: 0;
-      z-index: 1000;
+      z-index: 999;
       background: rgba(0, 0, 0, 0.25);
       backdrop-filter: blur(10px);
     }
@@ -48,9 +49,10 @@
       color: #19f5aa;
     }
 
+    /* Desktop Menu */
     nav ul {
       display: flex;
-      gap: 30px;
+      gap: 28px;
       list-style: none;
     }
 
@@ -65,32 +67,33 @@
       color: #19f5aa;
     }
 
-    /* HAMBURGER MENU */
+    /* Hamburger */
     .menu-btn {
       display: none;
-      font-size: 30px;
+      font-size: 32px;
       cursor: pointer;
       color: #19f5aa;
     }
 
-    /* MOBILE MENU */
+    /* Mobile Menu */
     .mobile-menu {
-      display: none;
+      width: 100%;
       position: fixed;
       top: 70px;
       left: 0;
-      width: 100%;
-      background: rgba(0,0,0,0.85);
-      padding: 20px 0;
-      backdrop-filter: blur(6px);
+      background: rgba(0, 0, 0, 0.92);
+      backdrop-filter: blur(8px);
       text-align: center;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
     }
 
     .mobile-menu a {
       display: block;
-      padding: 12px 0;
-      color: #d8d8d8;
+      padding: 15px 0;
       font-size: 18px;
+      color: #d8d8d8;
       text-decoration: none;
       transition: 0.3s;
     }
@@ -99,20 +102,20 @@
       color: #19f5aa;
     }
 
-    /* ------------------------ HERO SECTION ----------------------- */
+    /* HERO SECTION */
     .hero {
       width: 100%;
       min-height: 100vh;
+      padding: 150px 20px 40px 20px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 120px 20px 40px 20px;
     }
 
     .hero h1 {
-      font-size: 80px;
+      font-size: 75px;
       font-weight: 700;
       background: linear-gradient(to right, #19f5aa, #00e0ff);
       -webkit-background-clip: text;
@@ -120,32 +123,31 @@
     }
 
     .hero h2 {
-      font-size: 55px;
-      font-weight: 700;
+      font-size: 50px;
+      margin-top: 10px;
       background: linear-gradient(to right, #00aaff, #6bc7ff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-top: 10px;
     }
 
     .hero p {
-      margin-top: 25px;
-      font-size: 22px;
+      margin-top: 22px;
+      font-size: 20px;
       max-width: 750px;
       color: #b8c5c5;
       line-height: 1.6;
     }
 
-    /* ------------------------ BACKGROUND EFFECT ----------------------- */
+    /* BACKGROUND ANIMATION */
     .grid-bg {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: 
-        radial-gradient(circle at 20% 20%, rgba(0,255,200,0.08), transparent 60%),
-        radial-gradient(circle at 80% 70%, rgba(0,150,255,0.08), transparent 60%);
+      background:
+        radial-gradient(circle at 20% 20%, rgba(0,255,200,0.07), transparent 60%),
+        radial-gradient(circle at 80% 70%, rgba(0,150,255,0.07), transparent 60%);
       animation: floatBG 15s infinite linear;
       pointer-events: none;
       z-index: -1;
@@ -157,18 +159,14 @@
       100% { transform: translate(0,0); }
     }
 
-    /* ------------------------ TABLET RESPONSIVE ----------------------- */
+    /* TABLET */
     @media (max-width: 900px) {
-      nav {
-        padding: 18px 25px;
-      }
-
       .hero h1 { font-size: 55px; }
       .hero h2 { font-size: 38px; }
-      .hero p { font-size: 18px; max-width: 90%; }
+      .hero p { font-size: 17px; max-width: 90%; }
     }
 
-    /* ------------------------ MOBILE RESPONSIVE ----------------------- */
+    /* MOBILE */
     @media (max-width: 600px) {
       nav ul {
         display: none;
@@ -176,6 +174,10 @@
 
       .menu-btn {
         display: block;
+      }
+
+      .hero {
+        padding-top: 150px;
       }
 
       .hero h1 { font-size: 42px; }
@@ -195,30 +197,30 @@
     <div class="menu-btn" id="menuBtn">☰</div>
 
     <ul>
-      <li><a href="about.html">About</a></li>
-      <li><a href="education.html">Education</a></li>
-      <li><a href="skills.html">Skills</a></li>
-      <li><a href="experience.html">Experience</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="certification.html">Certifications</a></li>
-      <li><a href="achievement.html">Achievements</a></li>
-      <li><a href="contact.html">Contact</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Education</a></li>
+      <li><a href="#">Skills</a></li>
+      <li><a href="#">Experience</a></li>
+      <li><a href="#">Projects</a></li>
+      <li><a href="#">Certifications</a></li>
+      <li><a href="#">Achievements</a></li>
+      <li><a href="#">Contact</a></li>
     </ul>
   </nav>
 
-  <!-- MOBILE DROPDOWN MENU -->
+  <!-- MOBILE DROPDOWN -->
   <div class="mobile-menu" id="mobileMenu">
-      <a href="about.html">About</a>
-      <a href="education.html">Education</a>
-      <a href="skills.html">Skills</a>
-      <a href="experience.html">Experience</a>
-      <a href="projects.html">Projects</a>
-      <a href="certification.html">Certifications</a>
-      <a href="achievement.html">Achievements</a>
-      <a href="contact.html">Contact</a>
+      <a href="#">About</a>
+      <a href="#">Education</a>
+      <a href="#">Skills</a>
+      <a href="#">Experience</a>
+      <a href="#">Projects</a>
+      <a href="#">Certifications</a>
+      <a href="#">Achievements</a>
+      <a href="#">Contact</a>
   </div>
 
-  <!-- HERO -->
+  <!-- HERO SECTION -->
   <section class="hero">
     <h1>JASEER VK</h1>
     <h2>CYBERSECURITY RESEARCHER</h2>
@@ -233,9 +235,16 @@
 
     const menuBtn = document.getElementById("menuBtn");
     const mobileMenu = document.getElementById("mobileMenu");
+    let menuOpen = false;
 
     menuBtn.addEventListener("click", () => {
-      mobileMenu.style.display = mobileMenu.style.display === "block" ? "none" : "block";
+      menuOpen = !menuOpen;
+
+      if (menuOpen) {
+        mobileMenu.style.maxHeight = "500px";
+      } else {
+        mobileMenu.style.maxHeight = "0";
+      }
     });
   </script>
 
