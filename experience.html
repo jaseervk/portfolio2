@@ -5,9 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Experience</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
 
   <style>
+    :root {
+      --accent1: #00f0d6;
+      --accent2: #2ee06a;
+    }
+
     * { margin:0; padding:0; box-sizing:border-box; font-family:"Poppins",sans-serif; }
 
     body {
@@ -16,10 +21,9 @@
       overflow-x:hidden;
       padding-top:120px;
 
-      /* PAGE LOAD FADE */
       opacity:0;
       transform:translateY(20px);
-      transition:opacity 1s ease, transform 1s ease;
+      transition:opacity .8s ease, transform .8s ease;
     }
 
     body.loaded {
@@ -27,60 +31,138 @@
       transform:translateY(0);
     }
 
-    /* Floating Glow Background */
     .grid-bg {
-      position:fixed; top:0; left:0; width:100%; height:100%;
-      background: radial-gradient(circle at 20% 20%, rgba(0,255,200,0.08), transparent 60%),
-                  radial-gradient(circle at 80% 70%, rgba(0,150,255,0.08), transparent 60%);
-      animation:floatBG 15s infinite linear;
+      position:fixed; inset:0;
+      background: radial-gradient(circle at 20% 20%, rgba(0,255,200,0.07), transparent 60%),
+                  radial-gradient(circle at 80% 70%, rgba(0,150,255,0.07), transparent 60%);
+      animation: floatBG 15s infinite linear;
       pointer-events:none;
       z-index:-1;
     }
 
     @keyframes floatBG {
-      0% {transform:translate(0,0);}
-      50% {transform:translate(-30px,30px);}
-      100% {transform:translate(0,0);}
+      0% { transform:translate(0,0); }
+      50% { transform:translate(-30px, 30px); }
+      100% { transform:translate(0,0); }
     }
 
-    /* Navigation Bar */
+    /* NAV */
     nav {
-      width:100%; padding:25px 60px; display:flex;
-      justify-content:space-between; align-items:center;
-      position:fixed; top:0; left:0; z-index:1000;
-      background:rgba(0,0,0,0.25); backdrop-filter:blur(10px);
+      width:100%;
+      padding:22px 50px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position:fixed;
+      top:0; left:0;
+      z-index:2000;
+      background:rgba(0,0,0,0.25);
+      backdrop-filter:blur(10px);
     }
 
-    nav .logo { font-size:24px; font-weight:700; color:#19f5aa; }
-    nav ul { display:flex; gap:35px; list-style:none; }
-    nav ul li a { color:#d8d8d8; font-size:15px; text-decoration:none; transition:0.3s; }
-    nav ul li a:hover { color:#19f5aa; }
+    nav .logo { font-size:22px; font-weight:700; color:var(--accent1); }
 
-    /* Page Title */
+    nav ul {
+      display:flex;
+      gap:30px;
+      list-style:none;
+    }
+
+    nav ul li a {
+      text-decoration:none;
+      color:#d8d8d8;
+      font-size:15px;
+      transition:0.3s;
+    }
+
+    nav ul li a:hover { color:var(--accent1); }
+
+    .hamburger {
+      display:none;
+      font-size:32px;
+      color:var(--accent1);
+      cursor:pointer;
+      user-select:none;
+    }
+
+    /* MOBILE MENU */
+    .mobile-menu {
+      position:fixed;
+      top:75px; right:20px;
+      width:180px;
+      background:rgba(0,0,0,0.85);
+      backdrop-filter:blur(10px);
+      border:1px solid var(--accent1);
+      border-radius:10px;
+      padding:15px;
+      display:none;
+      flex-direction:column;
+      gap:14px;
+      z-index:3000;
+      animation:fadeIn .3s ease;
+    }
+
+    .mobile-menu a {
+      color:#d8d8d8;
+      text-decoration:none;
+      font-size:16px;
+      padding:8px;
+      border-radius:6px;
+      transition:.3s;
+    }
+
+    .mobile-menu a:hover {
+      background:rgba(0,240,214,0.1);
+      color:var(--accent1);
+    }
+
+    @keyframes fadeIn {
+      from { opacity:0; transform:translateY(-10px); }
+      to { opacity:1; transform:translateY(0); }
+    }
+
+    @media (max-width:760px) {
+      nav { padding:18px 25px; }
+      nav ul { display:none; }
+      .hamburger { display:block; }
+    }
+
+    /* PAGE TITLE */
     .page-title { text-align:center; margin-bottom:40px; }
     .page-title h1 {
-      font-size:60px; font-weight:700;
-      background:linear-gradient(to right, #19f5aa, #00e0ff);
-      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+      font-size:55px;
+      font-weight:700;
+      background:linear-gradient(to right,#19f5aa,#00e0ff);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
     }
 
-    /* Container */
+    @media (max-width:600px){
+      .page-title h1 { font-size:42px; }
+    }
+
+    /* EXPERIENCE CONTAINER */
     .container {
-      max-width:1000px; margin:0 auto; padding:0 30px;
-      display:flex; flex-direction:column; gap:30px;
+      max-width:950px;
+      margin:0 auto;
+      padding:0 25px;
+      display:flex;
+      flex-direction:column;
+      gap:30px;
     }
 
-    /* Cards */
     .exp-card {
-      border-radius:12px; padding:34px;
       background:rgba(255,255,255,0.03);
       border:1px solid rgba(23,255,151,0.14);
-      box-shadow:0 8px 30px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.04);
-      display:flex; gap:22px;
+      border-radius:14px;
+      padding:28px;
+      box-shadow:0 6px 28px rgba(0,0,0,0.45);
+      display:flex;
+      gap:20px;
 
       opacity:0;
-      transform:translateY(30px);
-      transition:opacity 1s ease, transform 1s ease;
+      transform:translateY(25px);
+      transition:opacity .8s ease, transform .8s ease;
     }
 
     .exp-card.visible {
@@ -89,26 +171,54 @@
     }
 
     .exp-icon {
-      min-width:56px; height:56px; border-radius:10px;
+      min-width:56px; height:56px;
+      border-radius:10px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      font-size:28px;
+      color:var(--accent1);
       background:rgba(0,240,214,0.05);
-      display:grid; place-items:center;
-      color:#17ff97; font-size:28px;
       border:1px solid rgba(23,255,151,0.1);
     }
 
-    .job-title { color:#17ff97; font-size:22px; font-weight:700; margin-bottom:6px; }
-    .company { color:#c7d2d2; font-size:15px; margin-bottom:6px; }
+    .job-title { font-size:22px; color:var(--accent1); font-weight:600; margin-bottom:6px; }
+    .company { color:#c7d2d2; font-size:15px; margin-bottom:8px; }
     .duration { color:#00e0ff; font-size:14px; margin-bottom:14px; display:inline-block; }
 
-    .bullets { padding-left:18px; color:#d8e6e5; font-size:15px; line-height:1.9; }
-    .bullets li {
-      margin:8px 0; list-style:none; position:relative; padding-left:14px;
+    .bullets {
+      padding-left:18px;
+      color:#dae7e7;
+      line-height:1.8;
+      font-size:15px;
     }
+
+    .bullets li {
+      margin:8px 0;
+      list-style:none;
+      position:relative;
+      padding-left:14px;
+    }
+
     .bullets li::before {
-      content:""; width:8px; height:8px; position:absolute;
-      left:0; top:6px; transform:rotate(45deg);
-      background:#00e0ff; border-radius:1px;
+      content:"";
+      width:8px; height:8px;
+      background:#00e0ff;
+      position:absolute;
+      left:0; top:6px;
+      border-radius:1px;
+      transform:rotate(45deg);
       box-shadow:0 0 6px rgba(0,240,214,0.25);
+    }
+
+    @media (max-width:600px) {
+      .exp-card {
+        flex-direction:column;
+        padding:22px;
+      }
+      .exp-icon {
+        width:50px; height:50px;
+      }
     }
   </style>
 </head>
@@ -116,74 +226,98 @@
 <body>
   <div class="grid-bg"></div>
 
-  <!-- Navigation -->
+  <!-- NAVBAR -->
   <nav>
-  <div class="logo">< JASEER_VK /></div>
-  <ul>
-    <li><a href="about.html">About Me</a></li>
-    <li><a href="education.html">Education</a></li>
-    <li><a href="skills.html">Skills</a></li>
-    <li><a href="experience.html">Experience</a></li>
-    <li><a href="projects.html">Projects</a></li>
-    <li><a href="certification.html">Certifications</a></li>
-    <li><a href="achievement.html">Achievements</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
-</nav>
-  
+    <div class="logo">&lt; JASEER_VK /&gt;</div>
 
+    <ul>
+      <li><a href="about.html">About Me</a></li>
+      <li><a href="education.html">Education</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="experience.html">Experience</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="certification.html">Certifications</a></li>
+      <li><a href="achievement.html">Achievements</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <div class="hamburger" id="hamburger">☰</div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="about.html">About</a>
+    <a href="education.html">Education</a>
+    <a href="skills.html">Skills</a>
+    <a href="experience.html">Experience</a>
+    <a href="projects.html">Projects</a>
+    <a href="certification.html">Certifications</a>
+    <a href="achievement.html">Achievements</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <!-- TITLE -->
   <div class="page-title">
     <h1>&lt;Experience /&gt;</h1>
   </div>
 
   <div class="container">
 
+    <!-- EXPERIENCE 1 -->
     <article class="exp-card">
       <div class="exp-icon">💼</div>
-      <div class="exp-content">
+      <div>
         <div class="job-title">Cybersecurity Student Intern</div>
         <div class="company">Offenso Hackers Academy Kochi</div>
-        <div class="duration">May 2025 - Present</div>
+        <div class="duration">May 2025 – Present</div>
+
         <ul class="bullets">
-          <li>Conduct comprehensive penetration testing and vulnerability assessments.</li>
-          <li>Participated in cybersecurity workshops, enhancing ethical hacking skills.</li>
-          <li>Test new attack tools & frameworks, contributing to academy training.</li>
+          <li>Conduct penetration testing & vulnerability assessments.</li>
+          <li>Participated in workshops enhancing ethical hacking skills.</li>
+          <li>Test attack tools & frameworks for academy training usage.</li>
         </ul>
       </div>
     </article>
 
+    <!-- EXPERIENCE 2 -->
     <article class="exp-card">
       <div class="exp-icon">💼</div>
-      <div class="exp-content">
+      <div>
         <div class="job-title">Android & Web Developer</div>
         <div class="company">Riss Technologies Kannur</div>
-        <div class="duration">Sep 2024 - Mar 2025</div>
+        <div class="duration">Sep 2024 – Mar 2025</div>
+
         <ul class="bullets">
           <li>Developed “DAYCARE” full-stack Android + Web application.</li>
-          <li>Handled UI design, backend creation, and database integration.</li>
+          <li>Handled UI design, backend creation & database integration.</li>
           <li>Tech used: HTML, Java, Python, Django, MySQL.</li>
-          <li>Designed responsive UI for both platforms.</li>
+          <li>Built responsive UI for both app & web platforms.</li>
         </ul>
       </div>
     </article>
-
   </div>
 
   <script>
-    // Fade Page on Load
     window.addEventListener("load", () => {
       document.body.classList.add("loaded");
 
-      // Fade cards in sequence
       document.querySelectorAll(".exp-card").forEach((card, i) => {
-        setTimeout(() => {
-          card.classList.add("visible");
-        }, i * 200); 
+        setTimeout(() => card.classList.add("visible"), i * 200);
       });
+    });
+
+    const hamburger = document.getElementById("hamburger");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    hamburger.addEventListener("click", () => {
+      mobileMenu.style.display = mobileMenu.style.display === "flex" ? "none" : "flex";
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+        mobileMenu.style.display = "none";
+      }
     });
   </script>
 
 </body>
 </html>
-
-
